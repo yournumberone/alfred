@@ -1,0 +1,11 @@
+production:
+  stage: deploy
+  image: ruby:latest
+  before_script:
+    - apt-get update -qq && apt-get install -y -qq ruby-dev
+    - gem install dpl --pre
+  script:
+    - dpl --provider=heroku --app=$HEROKU_APP_PRODUCTION --api-key=$HEROKU_API_KEY
+    - dpl heroku api --api-key=$HEROKU_API_KEY --app=$HEROKU_APP_PRODUCTION --run='rails db:migrate'
+  only:
+    - master

@@ -1,0 +1,7 @@
+en:
+  services:
+    index:
+      title: 'Services'
+      new: 'New service'
+      edit: 'Edit'
+      delete: 'Delete'

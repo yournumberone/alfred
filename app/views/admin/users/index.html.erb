@@ -1,0 +1,50 @@
+<div class="border-bottom mb-4">
+  <h1><%= t('.title') %></h1>
+</div>
+
+<p><%= link_to t('.new'), new_admin_user_path, class: 'btn btn-success' %></p>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th><%= t('.email') %></th>
+    <th class="text-center"><%= t('.access') %></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @active_users.each do |user| %>
+    <tr id="user_<%= user.id %>">
+      <td class="align-middle">
+        <%= link_to user.email, admin_user_path(user) %>
+      </td>
+
+      <td class="align-middle text-center">
+        <% user.oauth_applications.each do |app| %>
+          <span class="badge badge-info"> <%= app.name %> </span>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br />
+
+<% unless @deactivated_users.empty? %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th class="text-center"><%= t('.deactivated') %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @deactivated_users.each do |user| %>
+        <tr>
+          <td class="align-middle">
+            <%= link_to user.email, admin_user_path(user) %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

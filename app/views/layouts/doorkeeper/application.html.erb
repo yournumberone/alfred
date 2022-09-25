@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Alfred</title>
+      <%= stylesheet_link_tag "doorkeeper/application" %>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <style>
+      .alfred {
+        height: 800px;
+        position: relative;
+      }
+    </style>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+  </head>
+
+  <body>
+    <div class="main">
+        <!-- Sing in  Form -->
+      <section class="sign-in">
+        <div class="container">
+          <%=yield %>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

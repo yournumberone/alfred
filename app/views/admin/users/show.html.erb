@@ -1,0 +1,49 @@
+<p>
+  <%=image_tag @user.avatar %>
+</p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @user.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @user.last_name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+
+<p>
+  <strong>Dob:</strong>
+  <%= @user.dob %>
+</p>
+
+<p>
+  <strong>Access granted to:</strong>
+  <%= @user.oauth_applications.pluck(:name).join(', ') %>
+</p>
+
+<div class='d-flex'>
+<% if allowed_to?(:deactivate?, @user) %>
+  <%= button_to t('.deactivate'), admin_deactivate_user_path(@user), method: :put, class: 'user-show-button btn btn-danger' %>
+<% elsif allowed_to?(:activate?, @user) %>
+  <%= button_to t('.activate'), admin_activate_user_path(@user), method: :put, class: 'user-show-button btn btn-success' %>
+<% end %>
+  
+<% if allowed_to?(:edit_access?, @user) %>
+  <%= button_to t('.edit'), edit_admin_user_path(@user), method: :get, class: 'user-show-button btn btn-primary' %>
+<% end %>
+
+<% if allowed_to?(:delete?, @user) %>
+  <%= button_to t('.delete'), admin_user_path(@user), method: :delete, class: 'user-show-button btn btn-danger' %>
+<% end %>
+
+<% if allowed_to?(:invite_from_ui?, @user) %>
+  <%= button_to t('.invite'), create_invitation_path(email: @user.email), method: :post, class: 'user-show-button btn btn-success' %>
+<% end %>
+</div>

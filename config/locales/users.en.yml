@@ -1,0 +1,19 @@
+en:
+  admin:
+    users:
+      index:
+        title: 'Users'
+        new: 'New user'
+        access: 'Access granted to:'
+        deactivated: 'Deactivated users:'
+      show:
+        title: 'Application: %{name}'
+        edit: 'Edit'
+        deactivate: 'Deactivate'
+        activate: 'Activate'
+        delete: 'Delete'
+        invite: 'Send sign in link'
+  users:
+    index:
+      show:
+        invite: 'Send sign in link'

@@ -1,0 +1,4 @@
+<p>Hello, <%= @user.email %>!</p>
+<p>Recently a one-time link to sign into your Alfred account was generated, just press the link below to log in</p>
+
+<%= link_to "Sign in to my account", email_link_url(token: @user.magic_link_token) %>

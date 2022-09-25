@@ -1,0 +1,9 @@
+<nav class="navbar has-background-white">
+  <% if current_user %>
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <%= link_to current_user.name, user_path(current_user) %>
+      </div>
+    </div>
+  <% end %>
+</nav>
